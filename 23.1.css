@@ -139,7 +139,7 @@ nav li.active a{color:var(--accent);background:rgba(255,106,61,0.1);}
 
 
 /* Contact */
-.contact-form{  display:flex;flex-direction:column;gap:14px; height:100vh ;}
+.contact-form{  display:flex;flex-direction:column;gap:14px;}
 .form-group input,.form-group textarea{width:100%;padding:12px 14px;border:none;border-radius:8px;background:#1e1e1f;color:var(--text);font-size:15px;}
 .form-group input:focus,.form-group textarea:focus{outline:2px solid var(--accent);}
 .contact-form button{align-self:center;}
@@ -181,3 +181,4 @@ min-width:100%;
   .title{font-size:24px;}
 
 }
+
