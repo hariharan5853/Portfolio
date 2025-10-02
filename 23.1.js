@@ -1,71 +1,83 @@
-// ==============================
-// Toggle Theme Color Palette
-// ==============================
-const toggleBtn = document.getElementById('togglePalette');
-const palette = document.getElementById('palette');
+// ===== Sidebar toggle for mobile =====
+const sidebar = document.querySelector('.sidebar');
+const sidebarToggleBtn = document.getElementById('sidebarToggle');
 
-toggleBtn.addEventListener('click', () => {
-  palette.classList.toggle('active');
+sidebarToggleBtn.addEventListener('click', () => {
+  sidebar.classList.toggle('active');
 });
 
-// ==============================
-// Change Accent Color
-// ==============================
+// ===== Theme Palette =====
+const toggleBtn= document.getElementById('togglePalette');
+const palette = document.getElementById('palette');
+toggleBtn.addEventListener('click', () => palette.classList.toggle('active'));
 document.querySelectorAll('.color-swatch').forEach(btn => {
   btn.addEventListener('click', () => {
-    const color = btn.dataset.color;
-    document.documentElement.style.setProperty('--accent', color);
+    document.documentElement.style.setProperty('--accent', btn.dataset.color);
   });
 });
 
-// ==============================
-// Highlight Active Nav Item
-// ==============================
+// ===== Active Nav Highlight =====
 const navList = document.getElementById('navList');
 const navLinks = navList.querySelectorAll('a');
-
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
     navList.querySelectorAll('li').forEach(x => x.classList.remove('active'));
     link.parentElement.classList.add('active');
+    // Close sidebar on mobile after click
+    if (window.innerWidth <= 768) sidebar.classList.remove('active');
   });
 });
 
-
-
-
-// Select all social icons
-const icons = document.querySelectorAll(".iconweb a");
-
-// Define hover colors for each platform
-const hoverColors = ["#0A66C2", "#333", "#E4405F", "#FF0000"]; 
-
+// ===== Social icon hover =====
+const icons = document.querySelectorAll(".homeicon a");
+const hoverColors = ["#0A66C2", "#333", "#ec4564ff", "#FF0000"];
 icons.forEach((icon, index) => {
-  // On hover -> set platform color
   icon.addEventListener("mouseenter", () => {
     icon.style.color = hoverColors[index];
     icon.style.transform = "scale(1.2)";
   });
-
-  // On leave -> reset back to white
   icon.addEventListener("mouseleave", () => {
     icon.style.color = "#fff";
     icon.style.transform = "scale(1)";
   });
 });
 
+// ===== Contact Form Validation =====
+function validateForm() {
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+  
+  // Basic email regex
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-//  alert msg
-// function showAlert(){
-//   window.alert('successfully')
+  if (!name || !email || !message) {
+    alert("⚠️ Please fill in your Name, Email, and Message.");
+    return false;
+  }  
 
-// }
+  if (!emailRegex.test(email)) {
+    alert("⚠️ Please enter a valid email address.");
+    return false;
+  }
+
+  // ✅ Success
+  alert("✅ Successfully Submitted!");
+  
+  // Clear form
+  document.getElementById('name').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('message').value = '';
+
+  return false; // prevent actual form submission
+}
 
 
-// function ShowAlert(){
-//   alert("Submited successfully")
-// }
 
-// alert ("Show This Portfolio")
-// alert("open it")
- 
+
+
+
+
+
+
+
