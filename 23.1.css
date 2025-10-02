@@ -192,7 +192,7 @@ min-width:100%;
 }
 
 /* Mobile View */
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .sidebar {
     position: fixed;
     left: -260px; /* hidden by default */
@@ -211,6 +211,7 @@ min-width:100%;
     display: block;
   }
 }
+
 
 
 
